@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="forumContext"  targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/db_forum" driverClass="com.mysql.jdbc.Driver"  userId="root" password="root" />
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="com.wjb.forum.db.po" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator  targetPackage="com.wjb.forum.db.dao" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <table schema="game" tableName="user"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="board"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="login_log"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="post"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="reply"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+    </context>
+</generatorConfiguration>

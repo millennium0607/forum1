@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wjb.forum.db.dao.ReplyMapper">
+  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.Reply">
+    <id column="reply_id" jdbcType="INTEGER" property="replyId" />
+    <result column="reply_post_id" jdbcType="INTEGER" property="replyPostId" />
+    <result column="reply_user_name" jdbcType="VARCHAR" property="replyUserName" />
+    <result column="reply_good_count" jdbcType="INTEGER" property="replyGoodCount" />
+    <result column="reply_bad_count" jdbcType="INTEGER" property="replyBadCount" />
+    <result column="reply_create_time" jdbcType="TIMESTAMP" property="replyCreateTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wjb.forum.db.po.Reply">
+    <result column="reply_content" jdbcType="LONGVARCHAR" property="replyContent" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    reply_id, reply_post_id, reply_user_name, reply_good_count, reply_bad_count, reply_create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    reply_content
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.wjb.forum.db.po.ReplyExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.wjb.forum.db.po.ReplyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from reply
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.ReplyExample">
+    delete from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wjb.forum.db.po.Reply">
+    insert into reply (reply_id, reply_post_id, reply_user_name, 
+      reply_good_count, reply_bad_count, reply_create_time, 
+      reply_content)
+    values (#{replyId,jdbcType=INTEGER}, #{replyPostId,jdbcType=INTEGER}, #{replyUserName,jdbcType=VARCHAR}, 
+      #{replyGoodCount,jdbcType=INTEGER}, #{replyBadCount,jdbcType=INTEGER}, #{replyCreateTime,jdbcType=TIMESTAMP}, 
+      #{replyContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.Reply">
+    insert into reply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="replyId != null">
+        reply_id,
+      </if>
+      <if test="replyPostId != null">
+        reply_post_id,
+      </if>
+      <if test="replyUserName != null">
+        reply_user_name,
+      </if>
+      <if test="replyGoodCount != null">
+        reply_good_count,
+      </if>
+      <if test="replyBadCount != null">
+        reply_bad_count,
+      </if>
+      <if test="replyCreateTime != null">
+        reply_create_time,
+      </if>
+      <if test="replyContent != null">
+        reply_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="replyId != null">
+        #{replyId,jdbcType=INTEGER},
+      </if>
+      <if test="replyPostId != null">
+        #{replyPostId,jdbcType=INTEGER},
+      </if>
+      <if test="replyUserName != null">
+        #{replyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyGoodCount != null">
+        #{replyGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyBadCount != null">
+        #{replyBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCreateTime != null">
+        #{replyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null">
+        #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wjb.forum.db.po.ReplyExample" resultType="java.lang.Long">
+    select count(*) from reply
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update reply
+    <set>
+      <if test="record.replyId != null">
+        reply_id = #{record.replyId,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyPostId != null">
+        reply_post_id = #{record.replyPostId,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyUserName != null">
+        reply_user_name = #{record.replyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replyGoodCount != null">
+        reply_good_count = #{record.replyGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyBadCount != null">
+        reply_bad_count = #{record.replyBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyCreateTime != null">
+        reply_create_time = #{record.replyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.replyContent != null">
+        reply_content = #{record.replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update reply
+    set reply_id = #{record.replyId,jdbcType=INTEGER},
+      reply_post_id = #{record.replyPostId,jdbcType=INTEGER},
+      reply_user_name = #{record.replyUserName,jdbcType=VARCHAR},
+      reply_good_count = #{record.replyGoodCount,jdbcType=INTEGER},
+      reply_bad_count = #{record.replyBadCount,jdbcType=INTEGER},
+      reply_create_time = #{record.replyCreateTime,jdbcType=TIMESTAMP},
+      reply_content = #{record.replyContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update reply
+    set reply_id = #{record.replyId,jdbcType=INTEGER},
+      reply_post_id = #{record.replyPostId,jdbcType=INTEGER},
+      reply_user_name = #{record.replyUserName,jdbcType=VARCHAR},
+      reply_good_count = #{record.replyGoodCount,jdbcType=INTEGER},
+      reply_bad_count = #{record.replyBadCount,jdbcType=INTEGER},
+      reply_create_time = #{record.replyCreateTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.Reply">
+    update reply
+    <set>
+      <if test="replyPostId != null">
+        reply_post_id = #{replyPostId,jdbcType=INTEGER},
+      </if>
+      <if test="replyUserName != null">
+        reply_user_name = #{replyUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="replyGoodCount != null">
+        reply_good_count = #{replyGoodCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyBadCount != null">
+        reply_bad_count = #{replyBadCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCreateTime != null">
+        reply_create_time = #{replyCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replyContent != null">
+        reply_content = #{replyContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wjb.forum.db.po.Reply">
+    update reply
+    set reply_post_id = #{replyPostId,jdbcType=INTEGER},
+      reply_user_name = #{replyUserName,jdbcType=VARCHAR},
+      reply_good_count = #{replyGoodCount,jdbcType=INTEGER},
+      reply_bad_count = #{replyBadCount,jdbcType=INTEGER},
+      reply_create_time = #{replyCreateTime,jdbcType=TIMESTAMP},
+      reply_content = #{replyContent,jdbcType=LONGVARCHAR}
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.Reply">
+    update reply
+    set reply_post_id = #{replyPostId,jdbcType=INTEGER},
+      reply_user_name = #{replyUserName,jdbcType=VARCHAR},
+      reply_good_count = #{replyGoodCount,jdbcType=INTEGER},
+      reply_bad_count = #{replyBadCount,jdbcType=INTEGER},
+      reply_create_time = #{replyCreateTime,jdbcType=TIMESTAMP}
+    where reply_id = #{replyId,jdbcType=INTEGER}
+  </update>
+</mapper>
