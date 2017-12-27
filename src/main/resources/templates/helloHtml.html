@@ -1,20 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
     <title>hello Html</title>
-    <script src="webjars/vue/2.5.3/vue.min.js" />
-    <link rel='stylesheet' href='webjars/bootstrap/3.3.6/css/bootstrap.min.css' />
-    <script type='text/javascript' src='webjars/bootstrap/3.3.6/js/bootstrap.min.js'/>
-    <script type='text/javascript' src='webjars/jquery/2.2.4/jquery.min.js'/>
 
 </head>
 <body>
 <h1 th:inline="text">Hello </h1>
 <p th:text="${hello}"></p>
 <div id="app">
-    <div v-html="message" />
-    <div v-html="message" />
+    <div v-html="message" ></div>
+    <div v-html="message" ></div>
 </div>
 </body>
 <script>

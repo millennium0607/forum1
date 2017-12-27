@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment_head :: head">
+</head>
+<body>
+<nav th:fragment="header(n)" class="navbar navbar-default navbar-inverse" role="navigation">
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="sr-only">切换导航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/users">Blog</a>
+            </div>
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li th:classappend="${n==1}? 'active'"><a href="../users/list.html" th:href="@{/users}">首页</a></li>
+                    <li th:classappend="${n==2}? 'active'"><a href="../users/form.html" th:href="@{/users/form}">新增</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+</body>
+</html>

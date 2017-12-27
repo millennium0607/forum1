@@ -4,7 +4,9 @@ import com.wjb.forum.db.po.Post;
 import com.wjb.forum.db.po.PostExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-
+import org.springframework.stereotype.Component;
+//该注解是解决IDEA mapper注入时显示could not autowire的问题
+@Component(value = "postMapper")
 public interface PostMapper {
     long countByExample(PostExample example);
 
