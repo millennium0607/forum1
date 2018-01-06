@@ -17,16 +17,16 @@ public class helloHtml {
     private UserService userService;
     @RequestMapping("/helloHtml")
     public String helloHtml(Map<String,Object> map){
-        userService.getUserByName("11");
-        map.put("hello","aha,this is test again!!!");
+        User user = userService.getUserByName("test");
+        map.put("hello","aha,this is test again!!!  This is "+user.getUserName()+"!!!");
         return "helloHtml";
     }
     @RequestMapping(value = "/greeting")
     public ModelAndView index(ModelAndView mv){
         User user=userService.getUserByName("sfd");
         System.out.println(user.getUserName()+"--------------------");
-        mv.setViewName("/greeting");
-        mv.addObject("title",user.getPassword());
+        mv.setViewName("greeting");
+        mv.addObject("title",user.getUserName());
         return mv;
     }
 }
