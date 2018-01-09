@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/fragment_head :: head"></head>
+<link href="css/login.css" rel="stylesheet"/>
+<!--[if lt IE 9]>
+<meta http-equiv="refresh" content="0;ie.html" />
+<![endif]-->
+<script>
+    if (window.top !== window.self) {
+        window.top.location = window.location;
+    }
+</script>
+<body class="signin">
+    <div class="signinpanel">
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-5">
+            <form class="form-signin" th:action="@{/login}" method="post">
+                <h4 class="no-margins" style="color: #8b8378">Please sign in</h4>
+                <input type="text" class="form-control uname" name="username" placeholder="userName" required="required" autofocus="true"  />
+                <input type="password" class="form-control pword m-b" name="password" placeholder="Password" required="required" />
+                <input th:if="${kaptcha} == true" type="text" class="form-control" style="color: #000000" name="kaptcha" placeholder="verificationCode" />
+                <img th:if="${kaptcha} == true" src = "/static/kaptcha.jpg" width="200" id="kaptchaImage" alt="Verification Code Loading" title="Can't see ,click to change" />
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            </form>
+        </div>
+    </div>
+    <div class="signup-footer">
+        <div class="pull-left"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function() {
+        $('#kaptchaImage').click(function() {$(this).attr('src','/static/kaptcha.jpg?' + Math.floor(Math.random() * 100));});
+    });
+</script>
+</html>

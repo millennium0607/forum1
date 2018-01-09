@@ -24,6 +24,10 @@
                     <li th:classappend="${n==2}? 'active'"><a href="../users/form.html" th:href="@{/users/form}">新增</a>
                     </li>
                 </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" th:type="submit">Search</button>
+                </form>
             </div>
         </div>
     </div>

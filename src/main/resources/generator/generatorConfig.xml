@@ -38,6 +38,7 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
+        <!--
         <table schema="game" tableName="board"
                enableInsert="true"
                enableCountByExample="true"
@@ -78,5 +79,6 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
+        -->
     </context>
 </generatorConfiguration>

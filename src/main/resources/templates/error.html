@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/fragment_head :: head"></head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <h1 th:text="${status}" ></h1>
+        <h1 th:if="${status} == null " >999</h1>
+        <h3 class="font-bold">WJB,maybe some error happened.</h3>
+        <h3 class="font-bold" th:text="${msg}"></h3>
+        <h3 class="font-bold" th:if="${msg}==null ">An unknown error.</h3>
+        <h3 class="font-bold" > <span id="second" ></span>
+            <span> <a th:href="@{/}" > Return login. </a> </span>
+        </h3>
+
+    </div>
+</body>
+</html>

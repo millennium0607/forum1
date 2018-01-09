@@ -1,46 +1,34 @@
 package com.wjb.forum.db.po;
 
-import java.util.Date;
-
 public class User {
-    private Integer userId;
+    private Integer id;
 
-    private String userName;
+    private String username;
 
     private String password;
 
-    private String userEmail;
+    private String salt;
 
-    private String userSex;
+    private String avator;
 
-    private Integer userPhone;
+    private Integer deptid;
 
-    private Date createTime;
+    private Integer roleid;
 
-    private Integer userType;
-
-    private Integer userState;
-
-    private Integer credit;
-
-    private Date lastLoginTime;
-
-    private String lastIp;
-
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -51,75 +39,35 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getSalt() {
+        return salt;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
     }
 
-    public String getUserSex() {
-        return userSex;
+    public String getAvator() {
+        return avator;
     }
 
-    public void setUserSex(String userSex) {
-        this.userSex = userSex == null ? null : userSex.trim();
+    public void setAvator(String avator) {
+        this.avator = avator == null ? null : avator.trim();
     }
 
-    public Integer getUserPhone() {
-        return userPhone;
+    public Integer getDeptid() {
+        return deptid;
     }
 
-    public void setUserPhone(Integer userPhone) {
-        this.userPhone = userPhone;
+    public void setDeptid(Integer deptid) {
+        this.deptid = deptid;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Integer getRoleid() {
+        return roleid;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
-
-    public Integer getUserState() {
-        return userState;
-    }
-
-    public void setUserState(Integer userState) {
-        this.userState = userState;
-    }
-
-    public Integer getCredit() {
-        return credit;
-    }
-
-    public void setCredit(Integer credit) {
-        this.credit = credit;
-    }
-
-    public Date getLastLoginTime() {
-        return lastLoginTime;
-    }
-
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
-
-    public String getLastIp() {
-        return lastIp;
-    }
-
-    public void setLastIp(String lastIp) {
-        this.lastIp = lastIp == null ? null : lastIp.trim();
+    public void setRoleid(Integer roleid) {
+        this.roleid = roleid;
     }
 }

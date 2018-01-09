@@ -5,6 +5,7 @@ import com.wjb.forum.db.po.UserExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+
 //该注解是解决IDEA mapper注入时显示could not autowire的问题
 @Component(value = "userMapper")
 public interface UserMapper {
@@ -12,7 +13,7 @@ public interface UserMapper {
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(Integer userId);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
@@ -20,7 +21,7 @@ public interface UserMapper {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Integer userId);
+    User selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 

@@ -1,0 +1,16 @@
+/*去除导航圆角*/
+.navbar.navbar-inverse{
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+.nav-tabs
+{
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+}
+
+.table>tbody>tr>td{
+    vertical-align: 0;
+}
