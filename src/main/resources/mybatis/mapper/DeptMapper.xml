@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wjb.forum.db.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.User">
+<mapper namespace="com.wjb.forum.db.dao.DeptMapper">
+  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.Dept">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="salt" jdbcType="VARCHAR" property="salt" />
-    <result column="avator" jdbcType="VARCHAR" property="avator" />
-    <result column="deptid" jdbcType="INTEGER" property="deptid" />
-    <result column="roleid" jdbcType="INTEGER" property="roleid" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +65,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, salt, avator, deptid, roleid
+    id, num, name
   </sql>
-  <select id="selectByExample" parameterType="com.wjb.forum.db.po.UserExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.wjb.forum.db.po.DeptExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from user
+    from dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,105 +84,67 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user
+    from dept
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
+    delete from dept
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.UserExample">
-    delete from user
+  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.DeptExample">
+    delete from dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wjb.forum.db.po.User">
-    insert into user (id, username, password, 
-      salt, avator, deptid, 
-      roleid)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{salt,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, #{deptid,jdbcType=INTEGER}, 
-      #{roleid,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.wjb.forum.db.po.Dept">
+    insert into dept (id, num, name
+      )
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.User">
-    insert into user
+  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.Dept">
+    insert into dept
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="username != null">
-        username,
+      <if test="num != null">
+        num,
       </if>
-      <if test="password != null">
-        password,
-      </if>
-      <if test="salt != null">
-        salt,
-      </if>
-      <if test="avator != null">
-        avator,
-      </if>
-      <if test="deptid != null">
-        deptid,
-      </if>
-      <if test="roleid != null">
-        roleid,
+      <if test="name != null">
+        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="username != null">
-        #{username,jdbcType=VARCHAR},
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null">
-        #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="avator != null">
-        #{avator,jdbcType=VARCHAR},
-      </if>
-      <if test="deptid != null">
-        #{deptid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        #{roleid,jdbcType=INTEGER},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wjb.forum.db.po.UserExample" resultType="java.lang.Long">
-    select count(*) from user
+  <select id="countByExample" parameterType="com.wjb.forum.db.po.DeptExample" resultType="java.lang.Long">
+    select count(*) from dept
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user
+    update dept
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.username != null">
-        username = #{record.username,jdbcType=VARCHAR},
+      <if test="record.num != null">
+        num = #{record.num,jdbcType=INTEGER},
       </if>
-      <if test="record.password != null">
-        password = #{record.password,jdbcType=VARCHAR},
-      </if>
-      <if test="record.salt != null">
-        salt = #{record.salt,jdbcType=VARCHAR},
-      </if>
-      <if test="record.avator != null">
-        avator = #{record.avator,jdbcType=VARCHAR},
-      </if>
-      <if test="record.deptid != null">
-        deptid = #{record.deptid,jdbcType=INTEGER},
-      </if>
-      <if test="record.roleid != null">
-        roleid = #{record.roleid,jdbcType=INTEGER},
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -194,50 +152,30 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user
+    update dept
     set id = #{record.id,jdbcType=INTEGER},
-      username = #{record.username,jdbcType=VARCHAR},
-      password = #{record.password,jdbcType=VARCHAR},
-      salt = #{record.salt,jdbcType=VARCHAR},
-      avator = #{record.avator,jdbcType=VARCHAR},
-      deptid = #{record.deptid,jdbcType=INTEGER},
-      roleid = #{record.roleid,jdbcType=INTEGER}
+      num = #{record.num,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.User">
-    update user
+  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.Dept">
+    update dept
     <set>
-      <if test="username != null">
-        username = #{username,jdbcType=VARCHAR},
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
       </if>
-      <if test="password != null">
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="salt != null">
-        salt = #{salt,jdbcType=VARCHAR},
-      </if>
-      <if test="avator != null">
-        avator = #{avator,jdbcType=VARCHAR},
-      </if>
-      <if test="deptid != null">
-        deptid = #{deptid,jdbcType=INTEGER},
-      </if>
-      <if test="roleid != null">
-        roleid = #{roleid,jdbcType=INTEGER},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.User">
-    update user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      salt = #{salt,jdbcType=VARCHAR},
-      avator = #{avator,jdbcType=VARCHAR},
-      deptid = #{deptid,jdbcType=INTEGER},
-      roleid = #{roleid,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.Dept">
+    update dept
+    set num = #{num,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

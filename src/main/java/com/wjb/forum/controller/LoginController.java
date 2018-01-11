@@ -58,7 +58,7 @@ public class LoginController {
        //在调用了login方法后，SecurityManager会收到AuthenticationToken，并将其发送给已配置的Realm执行必须的认证检查
        //每个Realm都能在必要时对提交的AuthenticationTokens作出反应
        //所以这一步在调用login(token)方法时，它会走到MyRealm.doGetAuthenticationInfo()方法中，具体验证方式详见此方法
-       UsernamePasswordToken token = new UsernamePasswordToken(user.getUserName(),user.getPassword());
+       UsernamePasswordToken token = new UsernamePasswordToken(user.getUsername(),user.getPassword());
        try {
            currentSubject.login(token);
        }catch (AuthenticationException e){
@@ -67,35 +67,22 @@ public class LoginController {
            request.setAttribute("msg","UserName or password error.");
            return "error";
        }
-
-
-
-
-
-
-
-
-
-
-
-
-
         return "helloHtml";
     }
 
     @RequestMapping("/register")
     public String userRegister(Map<String,Object> map){
         User user = userService.getUserByName("test");
-        map.put("hello","aha,this is test again!!!  This is "+user.getUserName()+"!!!");
+        map.put("hello","aha,this is test again!!!  This is "+user.getUsername()+"!!!");
         return "helloHtml";
     }
 
     @RequestMapping(value = "/greeting")
     public ModelAndView index(ModelAndView mv){
         User user=userService.getUserByName("sfd");
-        System.out.println(user.getUserName()+"--------------------");
+        System.out.println(user.getUsername()+"--------------------");
         mv.setViewName("greeting");
-        mv.addObject("title",user.getUserName());
+        mv.addObject("title",user.getUsername());
         return mv;
     }
 }

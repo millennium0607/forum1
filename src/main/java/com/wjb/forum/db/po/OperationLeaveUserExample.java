@@ -3,14 +3,14 @@ package com.wjb.forum.db.po;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardExample {
+public class OperationLeaveUserExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public BoardExample() {
+    public OperationLeaveUserExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -104,263 +104,253 @@ public class BoardExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andBoardIdIsNull() {
-            addCriterion("board_id is null");
+        public Criteria andIdIsNull() {
+            addCriterion("id is null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdIsNotNull() {
-            addCriterion("board_id is not null");
+        public Criteria andIdIsNotNull() {
+            addCriterion("id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdEqualTo(Integer value) {
-            addCriterion("board_id =", value, "boardId");
+        public Criteria andIdEqualTo(Integer value) {
+            addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdNotEqualTo(Integer value) {
-            addCriterion("board_id <>", value, "boardId");
+        public Criteria andIdNotEqualTo(Integer value) {
+            addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdGreaterThan(Integer value) {
-            addCriterion("board_id >", value, "boardId");
+        public Criteria andIdGreaterThan(Integer value) {
+            addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("board_id >=", value, "boardId");
+        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdLessThan(Integer value) {
-            addCriterion("board_id <", value, "boardId");
+        public Criteria andIdLessThan(Integer value) {
+            addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdLessThanOrEqualTo(Integer value) {
-            addCriterion("board_id <=", value, "boardId");
+        public Criteria andIdLessThanOrEqualTo(Integer value) {
+            addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdIn(List<Integer> values) {
-            addCriterion("board_id in", values, "boardId");
+        public Criteria andIdIn(List<Integer> values) {
+            addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdNotIn(List<Integer> values) {
-            addCriterion("board_id not in", values, "boardId");
+        public Criteria andIdNotIn(List<Integer> values) {
+            addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdBetween(Integer value1, Integer value2) {
-            addCriterion("board_id between", value1, value2, "boardId");
+        public Criteria andIdBetween(Integer value1, Integer value2) {
+            addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("board_id not between", value1, value2, "boardId");
+        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameIsNull() {
-            addCriterion("board_name is null");
+        public Criteria andLeaveidIsNull() {
+            addCriterion("leaveid is null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameIsNotNull() {
-            addCriterion("board_name is not null");
+        public Criteria andLeaveidIsNotNull() {
+            addCriterion("leaveid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameEqualTo(String value) {
-            addCriterion("board_name =", value, "boardName");
+        public Criteria andLeaveidEqualTo(Integer value) {
+            addCriterion("leaveid =", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameNotEqualTo(String value) {
-            addCriterion("board_name <>", value, "boardName");
+        public Criteria andLeaveidNotEqualTo(Integer value) {
+            addCriterion("leaveid <>", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameGreaterThan(String value) {
-            addCriterion("board_name >", value, "boardName");
+        public Criteria andLeaveidGreaterThan(Integer value) {
+            addCriterion("leaveid >", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameGreaterThanOrEqualTo(String value) {
-            addCriterion("board_name >=", value, "boardName");
+        public Criteria andLeaveidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("leaveid >=", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameLessThan(String value) {
-            addCriterion("board_name <", value, "boardName");
+        public Criteria andLeaveidLessThan(Integer value) {
+            addCriterion("leaveid <", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameLessThanOrEqualTo(String value) {
-            addCriterion("board_name <=", value, "boardName");
+        public Criteria andLeaveidLessThanOrEqualTo(Integer value) {
+            addCriterion("leaveid <=", value, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameLike(String value) {
-            addCriterion("board_name like", value, "boardName");
+        public Criteria andLeaveidIn(List<Integer> values) {
+            addCriterion("leaveid in", values, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameNotLike(String value) {
-            addCriterion("board_name not like", value, "boardName");
+        public Criteria andLeaveidNotIn(List<Integer> values) {
+            addCriterion("leaveid not in", values, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameIn(List<String> values) {
-            addCriterion("board_name in", values, "boardName");
+        public Criteria andLeaveidBetween(Integer value1, Integer value2) {
+            addCriterion("leaveid between", value1, value2, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameNotIn(List<String> values) {
-            addCriterion("board_name not in", values, "boardName");
+        public Criteria andLeaveidNotBetween(Integer value1, Integer value2) {
+            addCriterion("leaveid not between", value1, value2, "leaveid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameBetween(String value1, String value2) {
-            addCriterion("board_name between", value1, value2, "boardName");
+        public Criteria andUseridIsNull() {
+            addCriterion("userid is null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardNameNotBetween(String value1, String value2) {
-            addCriterion("board_name not between", value1, value2, "boardName");
+        public Criteria andUseridIsNotNull() {
+            addCriterion("userid is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescIsNull() {
-            addCriterion("board_desc is null");
+        public Criteria andUseridEqualTo(Integer value) {
+            addCriterion("userid =", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescIsNotNull() {
-            addCriterion("board_desc is not null");
+        public Criteria andUseridNotEqualTo(Integer value) {
+            addCriterion("userid <>", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescEqualTo(String value) {
-            addCriterion("board_desc =", value, "boardDesc");
+        public Criteria andUseridGreaterThan(Integer value) {
+            addCriterion("userid >", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescNotEqualTo(String value) {
-            addCriterion("board_desc <>", value, "boardDesc");
+        public Criteria andUseridGreaterThanOrEqualTo(Integer value) {
+            addCriterion("userid >=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescGreaterThan(String value) {
-            addCriterion("board_desc >", value, "boardDesc");
+        public Criteria andUseridLessThan(Integer value) {
+            addCriterion("userid <", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescGreaterThanOrEqualTo(String value) {
-            addCriterion("board_desc >=", value, "boardDesc");
+        public Criteria andUseridLessThanOrEqualTo(Integer value) {
+            addCriterion("userid <=", value, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescLessThan(String value) {
-            addCriterion("board_desc <", value, "boardDesc");
+        public Criteria andUseridIn(List<Integer> values) {
+            addCriterion("userid in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescLessThanOrEqualTo(String value) {
-            addCriterion("board_desc <=", value, "boardDesc");
+        public Criteria andUseridNotIn(List<Integer> values) {
+            addCriterion("userid not in", values, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescLike(String value) {
-            addCriterion("board_desc like", value, "boardDesc");
+        public Criteria andUseridBetween(Integer value1, Integer value2) {
+            addCriterion("userid between", value1, value2, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescNotLike(String value) {
-            addCriterion("board_desc not like", value, "boardDesc");
+        public Criteria andUseridNotBetween(Integer value1, Integer value2) {
+            addCriterion("userid not between", value1, value2, "userid");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescIn(List<String> values) {
-            addCriterion("board_desc in", values, "boardDesc");
+        public Criteria andUsernameIsNull() {
+            addCriterion("username is null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescNotIn(List<String> values) {
-            addCriterion("board_desc not in", values, "boardDesc");
+        public Criteria andUsernameIsNotNull() {
+            addCriterion("username is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescBetween(String value1, String value2) {
-            addCriterion("board_desc between", value1, value2, "boardDesc");
+        public Criteria andUsernameEqualTo(String value) {
+            addCriterion("username =", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardDescNotBetween(String value1, String value2) {
-            addCriterion("board_desc not between", value1, value2, "boardDesc");
+        public Criteria andUsernameNotEqualTo(String value) {
+            addCriterion("username <>", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumIsNull() {
-            addCriterion("board_post_num is null");
+        public Criteria andUsernameGreaterThan(String value) {
+            addCriterion("username >", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumIsNotNull() {
-            addCriterion("board_post_num is not null");
+        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("username >=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumEqualTo(Integer value) {
-            addCriterion("board_post_num =", value, "boardPostNum");
+        public Criteria andUsernameLessThan(String value) {
+            addCriterion("username <", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumNotEqualTo(Integer value) {
-            addCriterion("board_post_num <>", value, "boardPostNum");
+        public Criteria andUsernameLessThanOrEqualTo(String value) {
+            addCriterion("username <=", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumGreaterThan(Integer value) {
-            addCriterion("board_post_num >", value, "boardPostNum");
+        public Criteria andUsernameLike(String value) {
+            addCriterion("username like", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("board_post_num >=", value, "boardPostNum");
+        public Criteria andUsernameNotLike(String value) {
+            addCriterion("username not like", value, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumLessThan(Integer value) {
-            addCriterion("board_post_num <", value, "boardPostNum");
+        public Criteria andUsernameIn(List<String> values) {
+            addCriterion("username in", values, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumLessThanOrEqualTo(Integer value) {
-            addCriterion("board_post_num <=", value, "boardPostNum");
+        public Criteria andUsernameNotIn(List<String> values) {
+            addCriterion("username not in", values, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumIn(List<Integer> values) {
-            addCriterion("board_post_num in", values, "boardPostNum");
+        public Criteria andUsernameBetween(String value1, String value2) {
+            addCriterion("username between", value1, value2, "username");
             return (Criteria) this;
         }
 
-        public Criteria andBoardPostNumNotIn(List<Integer> values) {
-            addCriterion("board_post_num not in", values, "boardPostNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andBoardPostNumBetween(Integer value1, Integer value2) {
-            addCriterion("board_post_num between", value1, value2, "boardPostNum");
-            return (Criteria) this;
-        }
-
-        public Criteria andBoardPostNumNotBetween(Integer value1, Integer value2) {
-            addCriterion("board_post_num not between", value1, value2, "boardPostNum");
+        public Criteria andUsernameNotBetween(String value1, String value2) {
+            addCriterion("username not between", value1, value2, "username");
             return (Criteria) this;
         }
     }

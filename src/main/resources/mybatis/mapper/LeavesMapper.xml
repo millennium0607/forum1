@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wjb.forum.db.dao.LoginLogMapper">
-  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.LoginLog">
+<mapper namespace="com.wjb.forum.db.dao.LeavesMapper">
+  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.Leaves">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="logname" jdbcType="VARCHAR" property="logname" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="starttime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="endtime" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
     <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="isfinish" jdbcType="INTEGER" property="isfinish" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
-    <result column="state" jdbcType="VARCHAR" property="state" />
-    <result column="message" jdbcType="VARCHAR" property="message" />
-    <result column="ip" jdbcType="VARCHAR" property="ip" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +71,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, logname, userid, createtime, state, message, ip
+    id, type, starttime, endtime, reason, userid, username, isfinish, createtime
   </sql>
-  <select id="selectByExample" parameterType="com.wjb.forum.db.po.LoginLogExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.wjb.forum.db.po.LeavesExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from login_log
+    from leaves
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,105 +90,125 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from login_log
+    from leaves
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from login_log
+    delete from leaves
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.LoginLogExample">
-    delete from login_log
+  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.LeavesExample">
+    delete from leaves
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wjb.forum.db.po.LoginLog">
-    insert into login_log (id, logname, userid, 
-      createtime, state, message, 
-      ip)
-    values (#{id,jdbcType=INTEGER}, #{logname,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
-      #{createtime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
-      #{ip,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.wjb.forum.db.po.Leaves">
+    insert into leaves (id, type, starttime, 
+      endtime, reason, userid, 
+      username, isfinish, createtime
+      )
+    values (#{id,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{endtime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{isfinish,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.LoginLog">
-    insert into login_log
+  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.Leaves">
+    insert into leaves
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="logname != null">
-        logname,
+      <if test="type != null">
+        type,
+      </if>
+      <if test="starttime != null">
+        starttime,
+      </if>
+      <if test="endtime != null">
+        endtime,
+      </if>
+      <if test="reason != null">
+        reason,
       </if>
       <if test="userid != null">
         userid,
       </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="isfinish != null">
+        isfinish,
+      </if>
       <if test="createtime != null">
         createtime,
-      </if>
-      <if test="state != null">
-        state,
-      </if>
-      <if test="message != null">
-        message,
-      </if>
-      <if test="ip != null">
-        ip,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="logname != null">
-        #{logname,jdbcType=VARCHAR},
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        #{reason,jdbcType=VARCHAR},
       </if>
       <if test="userid != null">
         #{userid,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinish != null">
+        #{isfinish,jdbcType=INTEGER},
+      </if>
       <if test="createtime != null">
         #{createtime,jdbcType=TIMESTAMP},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=VARCHAR},
-      </if>
-      <if test="message != null">
-        #{message,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null">
-        #{ip,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wjb.forum.db.po.LoginLogExample" resultType="java.lang.Long">
-    select count(*) from login_log
+  <select id="countByExample" parameterType="com.wjb.forum.db.po.LeavesExample" resultType="java.lang.Long">
+    select count(*) from leaves
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update login_log
+    update leaves
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.logname != null">
-        logname = #{record.logname,jdbcType=VARCHAR},
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starttime != null">
+        starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.endtime != null">
+        endtime = #{record.endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.reason != null">
+        reason = #{record.reason,jdbcType=VARCHAR},
       </if>
       <if test="record.userid != null">
         userid = #{record.userid,jdbcType=INTEGER},
       </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isfinish != null">
+        isfinish = #{record.isfinish,jdbcType=INTEGER},
+      </if>
       <if test="record.createtime != null">
         createtime = #{record.createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.state != null">
-        state = #{record.state,jdbcType=VARCHAR},
-      </if>
-      <if test="record.message != null">
-        message = #{record.message,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ip != null">
-        ip = #{record.ip,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -194,50 +216,60 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update login_log
+    update leaves
     set id = #{record.id,jdbcType=INTEGER},
-      logname = #{record.logname,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      endtime = #{record.endtime,jdbcType=TIMESTAMP},
+      reason = #{record.reason,jdbcType=VARCHAR},
       userid = #{record.userid,jdbcType=INTEGER},
-      createtime = #{record.createtime,jdbcType=TIMESTAMP},
-      state = #{record.state,jdbcType=VARCHAR},
-      message = #{record.message,jdbcType=VARCHAR},
-      ip = #{record.ip,jdbcType=VARCHAR}
+      username = #{record.username,jdbcType=VARCHAR},
+      isfinish = #{record.isfinish,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.LoginLog">
-    update login_log
+  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.Leaves">
+    update leaves
     <set>
-      <if test="logname != null">
-        logname = #{logname,jdbcType=VARCHAR},
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null">
+        reason = #{reason,jdbcType=VARCHAR},
       </if>
       <if test="userid != null">
         userid = #{userid,jdbcType=INTEGER},
       </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="isfinish != null">
+        isfinish = #{isfinish,jdbcType=INTEGER},
+      </if>
       <if test="createtime != null">
         createtime = #{createtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=VARCHAR},
-      </if>
-      <if test="message != null">
-        message = #{message,jdbcType=VARCHAR},
-      </if>
-      <if test="ip != null">
-        ip = #{ip,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.LoginLog">
-    update login_log
-    set logname = #{logname,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.Leaves">
+    update leaves
+    set type = #{type,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      reason = #{reason,jdbcType=VARCHAR},
       userid = #{userid,jdbcType=INTEGER},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=VARCHAR},
-      message = #{message,jdbcType=VARCHAR},
-      ip = #{ip,jdbcType=VARCHAR}
+      username = #{username,jdbcType=VARCHAR},
+      isfinish = #{isfinish,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

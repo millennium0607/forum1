@@ -2,12 +2,18 @@ package com.wjb.forum.db.po;
 
 import java.util.Date;
 
-public class LoginLog {
+public class OperationLog {
     private Integer id;
+
+    private String logtype;
 
     private String logname;
 
     private Integer userid;
+
+    private String classname;
+
+    private String method;
 
     private Date createtime;
 
@@ -15,14 +21,20 @@ public class LoginLog {
 
     private String message;
 
-    private String ip;
-
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getLogtype() {
+        return logtype;
+    }
+
+    public void setLogtype(String logtype) {
+        this.logtype = logtype == null ? null : logtype.trim();
     }
 
     public String getLogname() {
@@ -39,6 +51,22 @@ public class LoginLog {
 
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    public String getClassname() {
+        return classname;
+    }
+
+    public void setClassname(String classname) {
+        this.classname = classname == null ? null : classname.trim();
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public void setMethod(String method) {
+        this.method = method == null ? null : method.trim();
     }
 
     public Date getCreatetime() {
@@ -63,13 +91,5 @@ public class LoginLog {
 
     public void setMessage(String message) {
         this.message = message == null ? null : message.trim();
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
     }
 }

@@ -16,7 +16,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserByName(String userName) {
         UserExample example = new UserExample();
-        example.createCriteria().andUserNameEqualTo(userName);
+        example.createCriteria().andUsernameEqualTo(userName);
         List<User> users = userMapper.selectByExample(example);
         if (users.isEmpty()||users.size()<=0)
             return null;

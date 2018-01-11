@@ -38,8 +38,17 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
-        <!--
-        <table schema="game" tableName="board"
+        <table schema="game" tableName="dept"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="leaves"
                enableInsert="true"
                enableCountByExample="true"
                enableSelectByPrimaryKey="true"
@@ -59,7 +68,7 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
-        <table schema="game" tableName="post"
+        <table schema="game" tableName="memo"
                enableInsert="true"
                enableCountByExample="true"
                enableSelectByPrimaryKey="true"
@@ -69,7 +78,7 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
-        <table schema="game" tableName="reply"
+        <table schema="game" tableName="menu"
                enableInsert="true"
                enableCountByExample="true"
                enableSelectByPrimaryKey="true"
@@ -79,6 +88,65 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
-        -->
+        <table schema="game" tableName="notice"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="operation_leave_user"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="operation_log"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="role"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="role_menu_relation"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <table schema="game" tableName="thing"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
     </context>
 </generatorConfiguration>

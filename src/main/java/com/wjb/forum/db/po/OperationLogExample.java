@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class LoginLogExample {
+public class OperationLogExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LoginLogExample() {
+    public OperationLogExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -165,6 +165,76 @@ public class LoginLogExample {
             return (Criteria) this;
         }
 
+        public Criteria andLogtypeIsNull() {
+            addCriterion("logtype is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeIsNotNull() {
+            addCriterion("logtype is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeEqualTo(String value) {
+            addCriterion("logtype =", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeNotEqualTo(String value) {
+            addCriterion("logtype <>", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeGreaterThan(String value) {
+            addCriterion("logtype >", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeGreaterThanOrEqualTo(String value) {
+            addCriterion("logtype >=", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeLessThan(String value) {
+            addCriterion("logtype <", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeLessThanOrEqualTo(String value) {
+            addCriterion("logtype <=", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeLike(String value) {
+            addCriterion("logtype like", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeNotLike(String value) {
+            addCriterion("logtype not like", value, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeIn(List<String> values) {
+            addCriterion("logtype in", values, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeNotIn(List<String> values) {
+            addCriterion("logtype not in", values, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeBetween(String value1, String value2) {
+            addCriterion("logtype between", value1, value2, "logtype");
+            return (Criteria) this;
+        }
+
+        public Criteria andLogtypeNotBetween(String value1, String value2) {
+            addCriterion("logtype not between", value1, value2, "logtype");
+            return (Criteria) this;
+        }
+
         public Criteria andLognameIsNull() {
             addCriterion("logname is null");
             return (Criteria) this;
@@ -292,6 +362,146 @@ public class LoginLogExample {
 
         public Criteria andUseridNotBetween(Integer value1, Integer value2) {
             addCriterion("userid not between", value1, value2, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameIsNull() {
+            addCriterion("classname is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameIsNotNull() {
+            addCriterion("classname is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameEqualTo(String value) {
+            addCriterion("classname =", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameNotEqualTo(String value) {
+            addCriterion("classname <>", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameGreaterThan(String value) {
+            addCriterion("classname >", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameGreaterThanOrEqualTo(String value) {
+            addCriterion("classname >=", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameLessThan(String value) {
+            addCriterion("classname <", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameLessThanOrEqualTo(String value) {
+            addCriterion("classname <=", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameLike(String value) {
+            addCriterion("classname like", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameNotLike(String value) {
+            addCriterion("classname not like", value, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameIn(List<String> values) {
+            addCriterion("classname in", values, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameNotIn(List<String> values) {
+            addCriterion("classname not in", values, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameBetween(String value1, String value2) {
+            addCriterion("classname between", value1, value2, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andClassnameNotBetween(String value1, String value2) {
+            addCriterion("classname not between", value1, value2, "classname");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodIsNull() {
+            addCriterion("method is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodIsNotNull() {
+            addCriterion("method is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodEqualTo(String value) {
+            addCriterion("method =", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotEqualTo(String value) {
+            addCriterion("method <>", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodGreaterThan(String value) {
+            addCriterion("method >", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodGreaterThanOrEqualTo(String value) {
+            addCriterion("method >=", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLessThan(String value) {
+            addCriterion("method <", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLessThanOrEqualTo(String value) {
+            addCriterion("method <=", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodLike(String value) {
+            addCriterion("method like", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotLike(String value) {
+            addCriterion("method not like", value, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodIn(List<String> values) {
+            addCriterion("method in", values, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotIn(List<String> values) {
+            addCriterion("method not in", values, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodBetween(String value1, String value2) {
+            addCriterion("method between", value1, value2, "method");
+            return (Criteria) this;
+        }
+
+        public Criteria andMethodNotBetween(String value1, String value2) {
+            addCriterion("method not between", value1, value2, "method");
             return (Criteria) this;
         }
 
@@ -492,76 +702,6 @@ public class LoginLogExample {
 
         public Criteria andMessageNotBetween(String value1, String value2) {
             addCriterion("message not between", value1, value2, "message");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpIsNull() {
-            addCriterion("ip is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpIsNotNull() {
-            addCriterion("ip is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpEqualTo(String value) {
-            addCriterion("ip =", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpNotEqualTo(String value) {
-            addCriterion("ip <>", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpGreaterThan(String value) {
-            addCriterion("ip >", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpGreaterThanOrEqualTo(String value) {
-            addCriterion("ip >=", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpLessThan(String value) {
-            addCriterion("ip <", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpLessThanOrEqualTo(String value) {
-            addCriterion("ip <=", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpLike(String value) {
-            addCriterion("ip like", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpNotLike(String value) {
-            addCriterion("ip not like", value, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpIn(List<String> values) {
-            addCriterion("ip in", values, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpNotIn(List<String> values) {
-            addCriterion("ip not in", values, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpBetween(String value1, String value2) {
-            addCriterion("ip between", value1, value2, "ip");
-            return (Criteria) this;
-        }
-
-        public Criteria andIpNotBetween(String value1, String value2) {
-            addCriterion("ip not between", value1, value2, "ip");
             return (Criteria) this;
         }
     }

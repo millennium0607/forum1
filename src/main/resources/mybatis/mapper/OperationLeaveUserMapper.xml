@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.wjb.forum.db.dao.BoardMapper">
-  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.Board">
-    <id column="board_id" jdbcType="INTEGER" property="boardId" />
-    <result column="board_name" jdbcType="VARCHAR" property="boardName" />
-    <result column="board_desc" jdbcType="VARCHAR" property="boardDesc" />
-    <result column="board_post_num" jdbcType="INTEGER" property="boardPostNum" />
+<mapper namespace="com.wjb.forum.db.dao.OperationLeaveUserMapper">
+  <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.OperationLeaveUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="leaveid" jdbcType="INTEGER" property="leaveid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -66,15 +66,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    board_id, board_name, board_desc, board_post_num
+    id, leaveid, userid, username
   </sql>
-  <select id="selectByExample" parameterType="com.wjb.forum.db.po.BoardExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.wjb.forum.db.po.OperationLeaveUserExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from board
+    from operation_leave_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,76 +85,76 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from board
-    where board_id = #{boardId,jdbcType=INTEGER}
+    from operation_leave_user
+    where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from board
-    where board_id = #{boardId,jdbcType=INTEGER}
+    delete from operation_leave_user
+    where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.BoardExample">
-    delete from board
+  <delete id="deleteByExample" parameterType="com.wjb.forum.db.po.OperationLeaveUserExample">
+    delete from operation_leave_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wjb.forum.db.po.Board">
-    insert into board (board_id, board_name, board_desc, 
-      board_post_num)
-    values (#{boardId,jdbcType=INTEGER}, #{boardName,jdbcType=VARCHAR}, #{boardDesc,jdbcType=VARCHAR}, 
-      #{boardPostNum,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.wjb.forum.db.po.OperationLeaveUser">
+    insert into operation_leave_user (id, leaveid, userid, 
+      username)
+    values (#{id,jdbcType=INTEGER}, #{leaveid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.Board">
-    insert into board
+  <insert id="insertSelective" parameterType="com.wjb.forum.db.po.OperationLeaveUser">
+    insert into operation_leave_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="boardId != null">
-        board_id,
+      <if test="id != null">
+        id,
       </if>
-      <if test="boardName != null">
-        board_name,
+      <if test="leaveid != null">
+        leaveid,
       </if>
-      <if test="boardDesc != null">
-        board_desc,
+      <if test="userid != null">
+        userid,
       </if>
-      <if test="boardPostNum != null">
-        board_post_num,
+      <if test="username != null">
+        username,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="boardId != null">
-        #{boardId,jdbcType=INTEGER},
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
       </if>
-      <if test="boardName != null">
-        #{boardName,jdbcType=VARCHAR},
+      <if test="leaveid != null">
+        #{leaveid,jdbcType=INTEGER},
       </if>
-      <if test="boardDesc != null">
-        #{boardDesc,jdbcType=VARCHAR},
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
       </if>
-      <if test="boardPostNum != null">
-        #{boardPostNum,jdbcType=INTEGER},
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wjb.forum.db.po.BoardExample" resultType="java.lang.Long">
-    select count(*) from board
+  <select id="countByExample" parameterType="com.wjb.forum.db.po.OperationLeaveUserExample" resultType="java.lang.Long">
+    select count(*) from operation_leave_user
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update board
+    update operation_leave_user
     <set>
-      <if test="record.boardId != null">
-        board_id = #{record.boardId,jdbcType=INTEGER},
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.boardName != null">
-        board_name = #{record.boardName,jdbcType=VARCHAR},
+      <if test="record.leaveid != null">
+        leaveid = #{record.leaveid,jdbcType=INTEGER},
       </if>
-      <if test="record.boardDesc != null">
-        board_desc = #{record.boardDesc,jdbcType=VARCHAR},
+      <if test="record.userid != null">
+        userid = #{record.userid,jdbcType=INTEGER},
       </if>
-      <if test="record.boardPostNum != null">
-        board_post_num = #{record.boardPostNum,jdbcType=INTEGER},
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -162,35 +162,35 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update board
-    set board_id = #{record.boardId,jdbcType=INTEGER},
-      board_name = #{record.boardName,jdbcType=VARCHAR},
-      board_desc = #{record.boardDesc,jdbcType=VARCHAR},
-      board_post_num = #{record.boardPostNum,jdbcType=INTEGER}
+    update operation_leave_user
+    set id = #{record.id,jdbcType=INTEGER},
+      leaveid = #{record.leaveid,jdbcType=INTEGER},
+      userid = #{record.userid,jdbcType=INTEGER},
+      username = #{record.username,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.Board">
-    update board
+  <update id="updateByPrimaryKeySelective" parameterType="com.wjb.forum.db.po.OperationLeaveUser">
+    update operation_leave_user
     <set>
-      <if test="boardName != null">
-        board_name = #{boardName,jdbcType=VARCHAR},
+      <if test="leaveid != null">
+        leaveid = #{leaveid,jdbcType=INTEGER},
       </if>
-      <if test="boardDesc != null">
-        board_desc = #{boardDesc,jdbcType=VARCHAR},
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
       </if>
-      <if test="boardPostNum != null">
-        board_post_num = #{boardPostNum,jdbcType=INTEGER},
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
       </if>
     </set>
-    where board_id = #{boardId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.Board">
-    update board
-    set board_name = #{boardName,jdbcType=VARCHAR},
-      board_desc = #{boardDesc,jdbcType=VARCHAR},
-      board_post_num = #{boardPostNum,jdbcType=INTEGER}
-    where board_id = #{boardId,jdbcType=INTEGER}
+  <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.OperationLeaveUser">
+    update operation_leave_user
+    set leaveid = #{leaveid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
