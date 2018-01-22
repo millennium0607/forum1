@@ -22,4 +22,9 @@ public class UserServiceImpl implements UserService {
             return null;
         return  users.get(0);
     }
+
+    @Override
+    public User getUserById(int id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

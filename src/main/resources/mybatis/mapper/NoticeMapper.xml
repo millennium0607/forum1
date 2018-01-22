@@ -4,15 +4,13 @@
   <resultMap id="BaseResultMap" type="com.wjb.forum.db.po.Notice">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="body" jdbcType="VARCHAR" property="body" />
     <result column="message" jdbcType="VARCHAR" property="message" />
     <result column="senduserid" jdbcType="INTEGER" property="senduserid" />
     <result column="type" jdbcType="VARCHAR" property="type" />
     <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
     <result column="recivedeptid" jdbcType="INTEGER" property="recivedeptid" />
     <result column="reciveuserid" jdbcType="INTEGER" property="reciveuserid" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.wjb.forum.db.po.Notice">
-    <result column="body" jdbcType="LONGVARCHAR" property="body" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -73,27 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, title, message, senduserid, type, createtime, recivedeptid, reciveuserid
+    id, title, body, message, senduserid, type, createtime, recivedeptid, reciveuserid
   </sql>
-  <sql id="Blob_Column_List">
-    body
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.wjb.forum.db.po.NoticeExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from notice
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
   <select id="selectByExample" parameterType="com.wjb.forum.db.po.NoticeExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -108,11 +87,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from notice
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -127,13 +104,13 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.wjb.forum.db.po.Notice">
-    insert into notice (id, title, message, 
-      senduserid, type, createtime, 
-      recivedeptid, reciveuserid, body
+    insert into notice (id, title, body, 
+      message, senduserid, type, 
+      createtime, recivedeptid, reciveuserid
       )
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, 
-      #{senduserid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
-      #{recivedeptid,jdbcType=INTEGER}, #{reciveuserid,jdbcType=INTEGER}, #{body,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{body,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{senduserid,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{recivedeptid,jdbcType=INTEGER}, #{reciveuserid,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.wjb.forum.db.po.Notice">
@@ -144,6 +121,9 @@
       </if>
       <if test="title != null">
         title,
+      </if>
+      <if test="body != null">
+        body,
       </if>
       <if test="message != null">
         message,
@@ -163,9 +143,6 @@
       <if test="reciveuserid != null">
         reciveuserid,
       </if>
-      <if test="body != null">
-        body,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -173,6 +150,9 @@
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null">
+        #{body,jdbcType=VARCHAR},
       </if>
       <if test="message != null">
         #{message,jdbcType=VARCHAR},
@@ -192,9 +172,6 @@
       <if test="reciveuserid != null">
         #{reciveuserid,jdbcType=INTEGER},
       </if>
-      <if test="body != null">
-        #{body,jdbcType=LONGVARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.wjb.forum.db.po.NoticeExample" resultType="java.lang.Long">
@@ -211,6 +188,9 @@
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.body != null">
+        body = #{record.body,jdbcType=VARCHAR},
       </if>
       <if test="record.message != null">
         message = #{record.message,jdbcType=VARCHAR},
@@ -230,25 +210,7 @@
       <if test="record.reciveuserid != null">
         reciveuserid = #{record.reciveuserid,jdbcType=INTEGER},
       </if>
-      <if test="record.body != null">
-        body = #{record.body,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update notice
-    set id = #{record.id,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      message = #{record.message,jdbcType=VARCHAR},
-      senduserid = #{record.senduserid,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=VARCHAR},
-      createtime = #{record.createtime,jdbcType=TIMESTAMP},
-      recivedeptid = #{record.recivedeptid,jdbcType=INTEGER},
-      reciveuserid = #{record.reciveuserid,jdbcType=INTEGER},
-      body = #{record.body,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +219,7 @@
     update notice
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
+      body = #{record.body,jdbcType=VARCHAR},
       message = #{record.message,jdbcType=VARCHAR},
       senduserid = #{record.senduserid,jdbcType=INTEGER},
       type = #{record.type,jdbcType=VARCHAR},
@@ -272,6 +235,9 @@
     <set>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="body != null">
+        body = #{body,jdbcType=VARCHAR},
       </if>
       <if test="message != null">
         message = #{message,jdbcType=VARCHAR},
@@ -291,27 +257,13 @@
       <if test="reciveuserid != null">
         reciveuserid = #{reciveuserid,jdbcType=INTEGER},
       </if>
-      <if test="body != null">
-        body = #{body,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wjb.forum.db.po.Notice">
-    update notice
-    set title = #{title,jdbcType=VARCHAR},
-      message = #{message,jdbcType=VARCHAR},
-      senduserid = #{senduserid,jdbcType=INTEGER},
-      type = #{type,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=TIMESTAMP},
-      recivedeptid = #{recivedeptid,jdbcType=INTEGER},
-      reciveuserid = #{reciveuserid,jdbcType=INTEGER},
-      body = #{body,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wjb.forum.db.po.Notice">
     update notice
     set title = #{title,jdbcType=VARCHAR},
+      body = #{body,jdbcType=VARCHAR},
       message = #{message,jdbcType=VARCHAR},
       senduserid = #{senduserid,jdbcType=INTEGER},
       type = #{type,jdbcType=VARCHAR},
@@ -320,4 +272,7 @@
       reciveuserid = #{reciveuserid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getTop15Notice" parameterType="com.wjb.forum.db.po.NoticeExample" resultMap="BaseResultMap">
+    select * from notice limit 0,15
+  </select>
 </mapper>

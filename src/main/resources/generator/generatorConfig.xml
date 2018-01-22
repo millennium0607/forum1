@@ -28,6 +28,17 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
+        <table schema="game" tableName="notice"
+               enableInsert="true"
+               enableCountByExample="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="true"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="true"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true" >
+        </table>
+        <!--
         <table schema="game" tableName="user"
                enableInsert="true"
                enableCountByExample="true"
@@ -88,16 +99,7 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
-        <table schema="game" tableName="notice"
-               enableInsert="true"
-               enableCountByExample="true"
-               enableSelectByPrimaryKey="true"
-               enableSelectByExample="true"
-               enableUpdateByPrimaryKey="true"
-               enableUpdateByExample="true"
-               enableDeleteByPrimaryKey="true"
-               enableDeleteByExample="true" >
-        </table>
+
         <table schema="game" tableName="operation_leave_user"
                enableInsert="true"
                enableCountByExample="true"
@@ -148,5 +150,6 @@
                enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true" >
         </table>
+        -->
     </context>
 </generatorConfiguration>

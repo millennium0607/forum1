@@ -7,6 +7,8 @@ public class Notice {
 
     private String title;
 
+    private String body;
+
     private String message;
 
     private Integer senduserid;
@@ -18,8 +20,6 @@ public class Notice {
     private Integer recivedeptid;
 
     private Integer reciveuserid;
-
-    private String body;
 
     public Integer getId() {
         return id;
@@ -35,6 +35,14 @@ public class Notice {
 
     public void setTitle(String title) {
         this.title = title == null ? null : title.trim();
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body == null ? null : body.trim();
     }
 
     public String getMessage() {
@@ -83,13 +91,5 @@ public class Notice {
 
     public void setReciveuserid(Integer reciveuserid) {
         this.reciveuserid = reciveuserid;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body == null ? null : body.trim();
     }
 }

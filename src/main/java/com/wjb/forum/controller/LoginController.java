@@ -5,6 +5,7 @@ import com.wjb.forum.constant.Constant;
 import com.wjb.forum.db.po.User;
 import com.wjb.forum.service.UserService;
 import com.wjb.forum.utils.ForumTools;
+import com.wjb.forum.utils.MD5Util;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -31,10 +32,8 @@ public class LoginController {
     public String userLogin(HttpServletRequest request){
         if (forumTools.getKaptchaSwitch()){
             String kaptchaRecevied = request.getParameter("kaptcha");
-            log.info("a----------------"+kaptchaRecevied);
             //user input verification code
             String kaptchaExpected = (String) request.getSession().getAttribute(Constants.KAPTCHA_SESSION_KEY);
-            log.info("b----------------"+kaptchaExpected);
             //check verification code
             if(kaptchaExpected == null || !kaptchaRecevied.equals(kaptchaExpected)){
                 request.setAttribute("msg","Verification Code Error!");
@@ -46,11 +45,10 @@ public class LoginController {
         }
         String userName  = request.getParameter("username");
         String password = request.getParameter("password");
-        log.info("1----------------"+userName);
-        log.info("2----------------"+password);
+        String encryptPassword=MD5Util.encrypt(password);
         User user = userService.getUserByName(userName);
         //check userName and password.V1.0
-        if (user == null||!user.getPassword().equals(password))
+        if (user == null||!user.getPassword().equals(encryptPassword))
             return "/";
         //Get current subject
         Subject currentSubject= SecurityUtils.getSubject();
@@ -67,7 +65,7 @@ public class LoginController {
            request.setAttribute("msg","UserName or password error.");
            return "error";
        }
-        return "helloHtml";
+        return "redirect:/";
     }
 
     @RequestMapping("/register")

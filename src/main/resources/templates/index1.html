@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragment/fragment_head :: head"></head>
+<meta name="renderer" content="webkit" />
+<link rel="shortcut icon" th:href="@{/image/cat.ico}" />
+<link rel="stylesheet" th:href="@{/css/style.css}" />
+<!-- fixed-sidebar 固定浮动侧边框; overflow:hidden 隐藏内容溢出 -->
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!-- left menu -->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close">
+                <i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <span>
+                                <img alt="image" class="img-circle" th:src="@{'img/'+${sex}+'.jpg'}" />
+                            </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold" th:text="${userName}">Beaut-zihan</strong>
+                                    </span>
+                                    <span class="text-muted text-xs block" th:text="${tip+'▼'}">
+                                        <b class="caret"></b>
+                                    </span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li>
+                                    <a th:href="@{/setPassword}">set password</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a th:href="@{/logout}">logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">forum</div>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" th:href="@{/welcome}">
+                            <i class="fa fa-home"></i>
+                            <span class="nav-lable">index</span>
+                        </a>
+                    </li>
+                    <li th:each="menu:${menuList}">
+                        <a class="J_menuItem" th:href="${menu.url}">
+                            <i class="fa" th:attrappend="class=${' '+menu.icon}"></i>
+                            <span class="nav-lable" th:text="${menu.name}">my notice</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="J_menuItem" th:href="@{/introduction}">
+                            <i class="fa fa-bug"></i>
+                            <span class="nav-lable">show function</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- left menu end -->
+
+        <!-- right notice start -->
+        <div id="page-wrapper" class="gray-bg dashbord-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 bth bth-primary" href="#">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="deopdowm hidden-xs">
+                            <a class="right-sidebar-toggle" aria-expanded="false">
+                                <i class="fa fa-tasks"></i>
+                                menu
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">home page</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight">
+                    <i class="fa fa-forward"></i>
+                </button>
+                <div class="bth-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="deopdown">
+                        close action
+                        <span class="caret"></span>
+                    </button>
+                    <ul role="menu" class="deopdown-menu deopdown-menu-right">
+                        <li class="J_tabShowActive">
+                            <a>current tab</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll">
+                            <a>close all tab</a>
+                        </li>
+                        <li class="J_tabCloseOther">
+                            <a>close other tab</a>
+                        </li>
+                    </ul>
+                </div>
+                <a id="lohouta" class="roll-nav roll-right J_tabExit" onclick="window.location='/logout'">
+                    <i class="fa fa fa-sign-out"></i>
+                    logout
+                </a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" th:src="@{/welcome}" frameborder="0"></iframe>
+            </div>
+            <div class="footer"></div>
+        </div>
+        <!-- right notice end -->
+        <!-- left side bar start -->
+        <div id="right-sidebar">
+            <div class="sidebar-container">
+                <ul class="nav nav-tabs navs-2">
+                    <li class="active">
+                        <a data-toggle="tab" href="#tab-1">
+                            <i class="fa fa-gear"></i>
+                            theme
+                        </a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" href="#tab-2">notice</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="sidebar-title">
+                            <h3>
+                                <i class="fa fa-comments-o"></i>set theme
+                            </h3>
+                            <small>
+                                <i class="fa fa-tim"></i>
+                                You can view and choose the theme
+                            </small>
+                        </div>
+                        <div class="skin-setting">
+                            <div class="title">set theme</div>
+                            <div class="setings-item">
+                                <span>close left menu</span>
+                                <div class="onoffswitch">
+                                    <input type="checkbox" name="collapsemenu" class="onoffswitch-checkbox" id="collapsemenu" />
+                                    <label class="onoffswitch-label" for="collapsemenu">
+                                        <span class="onoffswitch-inner"></span>
+                                        <span class="onoffswitch-switch"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>pinned top</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input  type="checkbox" name="fixednavbar" class="onoffswitch-checkbox" id="fixednavbar" />
+                                        <label class="onoffswitch-lable" for="fixednavbar" >
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="setings-item">
+                                <span>pinned width</span>
+                                <div class="switch">
+                                    <div class="onoffswitch">
+                                        <input type="checkbox" name="boxedlayout" class="onoffswitch-checkbox" id="boxedlayout" />
+                                        <label class="onoffswitch-lable" for="boxedlayout">
+                                            <span class="onoffswitch-inner"></span>
+                                            <span class="onoffswitch-switch"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title">theme choose</div>
+                            <div class="setings-item default-skin nb">
+								<span class="skin-name "> <a href="#" class="s-skin-0">
+										默认皮肤 </a>
+								</span>
+                            </div>
+                            <div class="setings-item blue-skin nb">
+								<span class="skin-name "> <a href="#" class="s-skin-1">
+										蓝色主题 </a>
+								</span>
+                            </div>
+                            <div class="setings-item yellow-skin nb">
+								<span class="skin-name "> <a href="#" class="s-skin-3">
+										黄色/紫色主题 </a>
+								</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tab-2" class="tab-pane">
+                        <div class="sidebar-title">
+                            <h3>
+                                <i class="fa fa-comments-o"></i> 最新通知
+                            </h3>
+                        </div>
+                        <div>
+                            <div class="sidebar-message" th:each="notice:${noticelist}">
+                                <a href="#">
+                                    <div class="pull-left text-center">
+                                        <img alt="image" class="img-circle message-avatar"
+                                             th:src="@{'img/'+ ${notice.avatar}+ '.jpg'}" />
+                                        <div class="m-t-xs" th:text="${notice.sendUsername}"></div>
+                                    </div>
+                                    <div class="media-body" th:utext="${notice.message}"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script th:src="@{/webjars/metisMenu/2.7.0/metisMenu.min.js}"></script>
+    <script th:src="@{/webjars/jQuery-slimScroll/1.3.8/jquery.slimscroll.js}"></script>
+    <script th:src="@{/webjars/layui/1.0.7/lay/modules/layer.js}"></script>
+    <script th:src="@{/js/pace/pace.min.js}" ></script>
+    <script th:src="@{/js/hplus.js}"></script>
+    <script th:src="@{/js/index.js}" ></script>
+    <script th:src="@{/js/contabs.js}"></script>
+</body>
+</html>

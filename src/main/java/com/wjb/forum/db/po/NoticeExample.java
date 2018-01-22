@@ -235,6 +235,76 @@ public class NoticeExample {
             return (Criteria) this;
         }
 
+        public Criteria andBodyIsNull() {
+            addCriterion("body is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyIsNotNull() {
+            addCriterion("body is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyEqualTo(String value) {
+            addCriterion("body =", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyNotEqualTo(String value) {
+            addCriterion("body <>", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyGreaterThan(String value) {
+            addCriterion("body >", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyGreaterThanOrEqualTo(String value) {
+            addCriterion("body >=", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyLessThan(String value) {
+            addCriterion("body <", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyLessThanOrEqualTo(String value) {
+            addCriterion("body <=", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyLike(String value) {
+            addCriterion("body like", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyNotLike(String value) {
+            addCriterion("body not like", value, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyIn(List<String> values) {
+            addCriterion("body in", values, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyNotIn(List<String> values) {
+            addCriterion("body not in", values, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyBetween(String value1, String value2) {
+            addCriterion("body between", value1, value2, "body");
+            return (Criteria) this;
+        }
+
+        public Criteria andBodyNotBetween(String value1, String value2) {
+            addCriterion("body not between", value1, value2, "body");
+            return (Criteria) this;
+        }
+
         public Criteria andMessageIsNull() {
             addCriterion("message is null");
             return (Criteria) this;
